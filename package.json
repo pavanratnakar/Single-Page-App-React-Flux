@@ -1,0 +1,44 @@
+{
+    "name": "singlepage-app-react-flux",
+    "version": "0.1.0",
+    "description": "Single Page App Using Grunt, Node, Less, Eslint, React, Flux architecture on server and client",
+    "author": "Pavan Ratnakar <pavanratnakar@gmail.com>",
+    "main": "app.js",
+    "dependencies": {
+        "express": "*",
+        "express3-handlebars": "*",
+        "fs-extra": "*",
+        "compression": "*",
+        "lodash": "*",
+        "async": "*",
+        "path": "*",
+        "env": "*",
+        "react": "*",
+        "flux": "*",
+        "node-jsx": "*"
+    },
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-cli": "*",
+        "grunt-contrib-clean": "^0.6.0",
+        "grunt-contrib-concat": "^0.5.0",
+        "grunt-contrib-copy": "^0.7.0",
+        "grunt-contrib-less": "^0.12.0",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-execute": "^0.2.2",
+        "grunt-browserify": "*",
+        "grunt-react": "*",
+
+        "eslint": "*",
+        "eslint-plugin-react": "*",
+        "eslint-grunt": "^0.6.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pavanratnakar/Single-Page-App-React"
+    },
+    "bugs": {
+        "url": "https://github.com/pavanratnakar/Single-Page-App-React/issues"
+    },
+    "homepage": ""
+}
