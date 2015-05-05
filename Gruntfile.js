@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                 transform: [require("grunt-react").browserify]
             },
             client: {
-                src: ["build/lodash.build.min.js", "src/js/**/*.js", "src/js/**/*.jsx", "src/js/script.js"],
+                src: ["build/lodash.build.min.js", "build/lodash.build.min.js", "src/js/**/*.js", "src/js/**/*.jsx", "src/js/script.js"],
                 dest: "dist/react/bundle.js"
             }
         },

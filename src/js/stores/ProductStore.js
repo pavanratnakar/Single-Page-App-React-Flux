@@ -5,15 +5,37 @@ var ProductConstants = require("../constants/ProductConstants.js"),
     EventEmitter = require("events").EventEmitter,
     _ = require("lodash");
 
-var _products = [];
+var _products = [],
+    _selected = 0;
 
 function loadProductData (data) {
     _products = data;
 }
 
+function setSelected (index) {
+    _selected = index.toString();
+}
+
 var ProductStore = _.extend({}, EventEmitter.prototype, {
     getProducts: function () {
         return _products;
+    },
+    getProduct: function () {
+        var filteredProduct = _.filter(_products, function (product) {
+            if (product.id === _selected) {
+                return true;
+            }
+        });
+        return filteredProduct ? filteredProduct[0] : null
+    },
+    emitChange: function () {
+        this.emit("change");
+    },
+    addChangeListener: function (callback) {
+        this.on("change", callback);
+    },
+    removeChangeListener: function (callback) {
+        this.removeListener("change", callback);
     }
 });
 
@@ -21,17 +43,20 @@ AppDispatcher.register(function (payload) {
     var action = payload.action;
 
     switch (action.actionType) {
-        case ProductConstants.RECEIVE_DATA:
+        case ProductConstants.PRODUCT_RECEIVE_DATA:
             loadProductData(action.data);
             break;
 
-        case ProductsContants.SELECTED:
-
+        case ProductConstants.PRODUCT_SELECTED:
+            setSelected(action.data);
             break;
 
         default:
             return true;
     }
+
+    ProductStore.emitChange();
+    return true;
 });
 
 module.exports = ProductStore;

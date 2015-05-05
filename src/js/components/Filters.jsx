@@ -2,6 +2,7 @@ var React = require("react");
 
 // Export the ReactApp component
 var Filters = React.createClass({
+
     render: function () {
         var t = this,
             checked;
@@ -9,7 +10,7 @@ var Filters = React.createClass({
         var categories = t.props.categories.map(function (category, index) {
             checked = category.value;
             return (
-                <label><input onClick={t.filterClickHandler} type="checkbox" name="category" value={category.name} checked={checked} />{category.title}</label>
+                <label><input type="checkbox" name="category" value={category.name} checked={checked} />{category.title}</label>
             )
         });
         return (
@@ -24,6 +25,7 @@ var Filters = React.createClass({
             </div>
         )
     }
+
 });
 
 module.exports = Filters;

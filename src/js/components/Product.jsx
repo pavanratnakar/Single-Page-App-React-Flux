@@ -1,12 +1,18 @@
 /** @jsx React.DOM */
 
-var React = require("react");
+var React = require("react"),
+    ProductActions = require('../actions/ProductActions');
 
 // Export the ReactApp component
 var Product = React.createClass({
+
     // Set the initial component state
-    getInitialState: function (props) {
+    getInitialState: function () {
         return {};
+    },
+
+    clickHandler: function (e) {
+        ProductActions.selectProduct($(e.currentTarget).data('index'));
     },
 
     render: function () {
@@ -20,6 +26,7 @@ var Product = React.createClass({
             </li>
         )
     }
+
 });
 
 module.exports = Product;

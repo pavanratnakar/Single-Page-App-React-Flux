@@ -6,6 +6,7 @@ var React = require("react"),
 
 // Export the ReactApp component
 var Products = React.createClass({
+
     // Set the initial component state
     getInitialState: function (props) {
         return {

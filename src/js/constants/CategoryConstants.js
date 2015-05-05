@@ -1,9 +1,9 @@
-"use strict";
+"user strict"
 
 var keyMirror = require("react/lib/keyMirror");
 
 // Define action constants
 module.exports = keyMirror({
-    PRODUCT_SELECTED: null,
-    PRODUCT_RECEIVE_DATA: null
+    CATEGORY_SELECTED: null,
+    CATEGORY_RECEIVE_DATA: null
 });

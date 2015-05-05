@@ -4,6 +4,7 @@ var React = require("react");
 
 // Export the ReactApp component
 var Error = React.createClass({
+
     render: function () {
         return (
             <div className="error page">
@@ -11,6 +12,7 @@ var Error = React.createClass({
             </div>
         )
     }
+
 });
 
 module.exports = Error;
