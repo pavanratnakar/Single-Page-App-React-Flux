@@ -17,7 +17,7 @@ var Product = React.createClass({
 
     render: function () {
         return (
-            <li data-index={this.props.id} onClick={this.clickHandler}>
+            <li data-index={this.props.id} onClick={this.clickHandler} className="Bxz(bb) D(ib) Cur(p) Pos(r) Ta(start) Bg(subtitle)">
                 <a href="#" className="product-photo">
                     <img src={"http://" + this.props.farm + "/" + this.props.server + "/" + this.props.id + "_" + this.props.secret + "_q.jpg"} height="150" alt={this.props.title} />
                 </a>
