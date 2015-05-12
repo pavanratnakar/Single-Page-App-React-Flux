@@ -35,6 +35,19 @@ module.exports = function(grunt) {
             }
         },
 
+        atomizer: {
+            app: {
+                options: {
+                    ie: true,
+                    configFile: "./config/atomic-config.js"
+                },
+                files: [{
+                    src: ["src/**/**/*.jsx"],
+                    dest: "dist/style_atomic.min.css"
+                }]
+            }
+        },
+
         browserify: {
             options: {
                 transform: [require("grunt-react").browserify]
@@ -108,6 +121,7 @@ module.exports = function(grunt) {
     // Load module
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks("grunt-atomizer");
     grunt.loadNpmTasks("grunt-browserify");
     grunt.loadNpmTasks("eslint-grunt");
     grunt.loadNpmTasks("grunt-contrib-copy");
@@ -119,6 +133,7 @@ module.exports = function(grunt) {
     grunt.registerTask("build", [
         "less:build",
         "less:minified",
+        "atomizer:app",
         "browserify",
         "eslint",
         "copy",
