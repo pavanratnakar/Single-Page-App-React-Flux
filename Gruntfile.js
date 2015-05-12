@@ -5,6 +5,19 @@ var fs = require("fs");
 module.exports = function(grunt) {
     grunt.initConfig({
 
+        atomizer: {
+            app: {
+                options: {
+                    ie: true,
+                    configFile: "./config/atomic-config.js"
+                },
+                files: [{
+                    src: ["src/**/**/*.jsx"],
+                    dest: "dist/style_atomic.min.css"
+                }]
+            }
+        },
+
         less: {
             build: {
                 options: {},
@@ -17,7 +30,7 @@ module.exports = function(grunt) {
                     cleancss: true
                 },
                 files: {
-                    "dist/style_less.min.css": "src/less/style.less"
+                    "dist/style_less.min.css": ["src/less/style.less", "dist/style_atomic.min.css"]
                 }
             },
             // re-minify everything in tests/ so that they all
@@ -32,19 +45,6 @@ module.exports = function(grunt) {
                 files: {
                     "tests/less/style_less.min.css": "src/less/style.less"
                 }
-            }
-        },
-
-        atomizer: {
-            app: {
-                options: {
-                    ie: true,
-                    configFile: "./config/atomic-config.js"
-                },
-                files: [{
-                    src: ["src/**/**/*.jsx"],
-                    dest: "dist/style_atomic.min.css"
-                }]
             }
         },
 
