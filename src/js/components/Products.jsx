@@ -26,7 +26,7 @@ var Products = React.createClass({
         return (
             <div className="all-products page">
                 <Filters categories={t.props.categories} />
-                <ul className="products-list Fx(0) Opacity(0) P(0) Ta(c) Maw(1500px) Mstart(225px)">
+                <ul className="products-list Fx(0) Op(0) P(0) Ta(c) Maw(1500px) Mstart(225px)">
                     {products}
                 </ul>
             </div>

@@ -6,7 +6,9 @@ module.exports = {
     'custom': {
         title: '#5a96b9',
         overlayBg: '#282b2c',
-        subtitle: '#FFFFFF'
+        subtitle: '#FFFFFF',
+        filters: '#2B2E31',
+        border: '#DBE3E7'
     },
     // breakpoints define media queries and is used to contain the style of a class
     // only when that media query is active.

@@ -10,17 +10,17 @@ var Filters = React.createClass({
         var categories = t.props.categories.map(function (category, index) {
             checked = category.value;
             return (
-                <label><input type="checkbox" name="category" value={category.name} checked={checked} />{category.title}</label>
+                <label className="D(b) Fz(15px) Lh(1.4em)"><input className="Mend(10px)" type="checkbox" name="category" value={category.name} checked={checked} />{category.title}</label>
             )
         });
         return (
-            <div className="filters">
+            <div className="filters Bxz(bb) W(190px) Bg(subtitle) Pos(f) Ta(start) C(filters) Op(0) Pe(n) Bdrs(3px)">
                 <form>
-                    <div className="filter-criteria">
-                        <span>Category</span>
+                    <div className="filter-criteria D(b) My(10px)">
+                        <span className="D(b) Fz(14px) Fw(b) My(10px">Category</span>
                         {categories}
                     </div>
-                    <button>Clear filters</button>
+                    <button className="Bdrs(2px) C(subtitle) Fx(13px) P(10px) M(10px) Cur(p) Fw(b)">Clear filters</button>
                 </form>
             </div>
         )
