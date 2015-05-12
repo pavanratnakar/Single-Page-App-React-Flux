@@ -87,7 +87,7 @@ var ReactApp = React.createClass({
 
     render: function () {
         return (
-            <div className="main-content Bxz(bb) Ta(c) M(a) Mstart(45px) Mend(60px) Pstart(40px) Pend(40px)">
+            <div className="main-content Bxz(bb) Ta(c) M(a) Mstart(45px) Mend(60px) Pstart(40px) Pend(40px) Mx(auto)--sm My(45px)--sm Px(24px)--sm Py(0)--sm">
                 <RouteHandler categories={this.state.categories} products={this.state.products} product={this.state.product} onClose={this.hideProductPage} />
             </div>
         )

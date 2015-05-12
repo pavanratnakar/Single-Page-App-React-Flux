@@ -14,13 +14,13 @@ var Filters = React.createClass({
             )
         });
         return (
-            <div className="filters Bxz(bb) W(190px) Bg(subtitle) Pos(f) Ta(start) C(filters) Op(0) Pe(n) Bdrs(3px)">
+            <div className="filters Bxz(bb) W(190px) Bg(subtitle) Pos(f) Ta(start) C(filters) Op(0) Pe(n) Bdrs(3px) visible_Op(1) visible_Trsde(1s) visible_Pe(a)">
                 <form>
                     <div className="filter-criteria D(b) My(10px)">
                         <span className="D(b) Fz(14px) Fw(b) My(10px">Category</span>
                         {categories}
                     </div>
-                    <button className="Bdrs(2px) C(subtitle) Fx(13px) P(10px) M(10px) Cur(p) Fw(b)">Clear filters</button>
+                    <button className="Bdrs(2px) C(subtitle) Fx(13px) P(10px) M(10px) Cur(p) Fw(b) Bg(primary) Bd(0)">Clear filters</button>
                 </form>
             </div>
         )

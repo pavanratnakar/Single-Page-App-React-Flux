@@ -24,16 +24,16 @@
     );
 }
 
-*{
+* {
     margin:0;
     padding:0;
 }
 
-body{
+body {
     font: normal 16px Arial, Helvetica, sans-serif;
 }
 
-h1, h3{
+h1, h3 {
     font: normal 24px 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
@@ -41,19 +41,10 @@ h1, h3{
     Main Content
 ------------------*/
 
-.main-content h3{
+.main-content h3 {
     font-size: 28px;
     color:  #5a96b9;
     padding-bottom: 20px;
-}
-
-@media (max-width: 600px){
-
-    .main-content{
-        margin: 45px auto;
-        padding: 0 25px;
-    }
-
 }
 
 /*-------------------
@@ -62,95 +53,49 @@ h1, h3{
 
 /*  Filter Form */
 
-.filters{
+.filters {
     padding: 5px 30px 30px;
     border: 1px solid #DBE3E7;
     .box-shadow(1px 3px 1px, 0.08);
 }
 
-.filters button{
-    background-color:  #4BC34B;
+.filters button {
     border: 0;
     .box-shadow(0 1px 1px, 0.12);
 }
 
 /*  Products List   */
 
-.all-products h3{
+.all-products h3 {
     opacity: 0;
 }
 
-.products-list{
+.products-list {
     list-style: none;
 }
 
-.all-products.visible .products-list,
-.all-products.visible .filters,
-.all-products.visible h3{
-    opacity: 1;
-    transition: 1s;
-    pointer-events: auto;
-}
-
-.products-list > li{
-    transition: 0.2s;
-    font:normal 12px sans-serif;
-    border:1px solid #dbe3e7;
-    border-radius: 3px;
+.products-list > li {
+    font: normal 12px sans-serif;
+    border: 1px solid #dbe3e7;
     margin: 0 12px 12px 0;
     .box-shadow(1px 3px 1px, 0.08);
 }
 
-.products-list > li.hidden{
+.products-list > li.hidden {
     opacity: 0.2;
     pointer-events: none;
 }
 
 /* The product image */
 
-.products-list .product-photo{
+.products-list .product-photo {
     .background-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0), 0%, 33%);
-}
-
-/* The product name */
-
-.products-list h2{
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.products-list .highlight{
-    background-color: rgba(0,0,0,0.1);
-    transition: 0.4s;
 }
 
 /*---------------------------
     Single Product Page
 ----------------------------*/
 
-.overlay{
-    transition: 0.6s;
-}
-
-.single-product.visible .preview-large{
-    transition: 1.4s;
-}
-
-.preview-large h3{
+.preview-large h3 {
     background: rgba(0, 0, 0, 0.4);
-}
-
-.close{
-    background-color: rgba(255,255,255,0.1);
-}
-
-/*---------------------------
-    Error Page
-----------------------------*/
-
-.error{
-    transition: 0.6s;
-}
-
-.error.visible{
-    opacity: 1;
 }
