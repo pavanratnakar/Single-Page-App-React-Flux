@@ -3,6 +3,7 @@
 var React = require("react"),
     ProductStore = require("../stores/ProductStore.js"),
     CategoryStore = require("../stores/CategoryStore.js"),
+    ProductActions = require("../actions/ProductActions"),
     Router = require("react-router"),
     _ = require("lodash");
 
@@ -18,6 +19,7 @@ var ReactApp = React.createClass({
     },
 
     _onChange: function () {
+        this.currentProps = _.merge(this.currentProps, this.getState());
         this.setState(this.getState());
     },
 
@@ -32,7 +34,6 @@ var ReactApp = React.createClass({
 
     showProductPage: function () {
         $(".single-product").addClass("visible");
-        this.context.router.transitionTo("/product/" + this.state.product.id);
     },
 
     showProductsPage: function () {
@@ -63,20 +64,25 @@ var ReactApp = React.createClass({
 
     },
 
-    componentDidUpdate: function () {
+    loadPage: function () {
         var t = this;
 
         if (t.isActive("notfound")) {
             t.showNotFound();
-        } else if (t.state.product.id) {
-            t.currentProps = _.merge(t.currentProps, {
-                product: t.state.product,
-                onClose: t.hideProductPage
-            });
-            t.showProductPage();
         } else {
-            t.showProductsPage();
+            if (t.context.router.getCurrentParams().productId) {
+                t.showProductPage();
+            } else {
+                t.showProductsPage();
+            }
         }
+    },
+
+    componentDidUpdate: function () {
+        if (this.state.product.id) {
+            this.context.router.transitionTo("/product/" + this.state.product.id);
+        }
+        this.loadPage();
         return true;
     },
 
@@ -88,21 +94,19 @@ var ReactApp = React.createClass({
         if (t.isActive("notfound")) {
             t.currentProps = {};
         } else {
-            t.currentProps = _.merge(t.currentProps, {
-                products: t.state.products,
-                categories: t.state.categories
-            });
+            if (t.context.router.getCurrentParams().productId) {
+                ProductActions.selectProduct(t.context.router.getCurrentParams().productId);
+            } else {
+                t.currentProps = _.merge(t.currentProps, {
+                    products: t.state.products,
+                    categories: t.state.categories
+                });
+            }
         }
     },
 
     componentDidMount: function () {
-        var t = this;
-
-        if (t.isActive("notfound")) {
-            t.showNotFound();
-        } else {
-            t.showProductsPage();
-        }
+        this.loadPage();
     },
 
     render: function () {
