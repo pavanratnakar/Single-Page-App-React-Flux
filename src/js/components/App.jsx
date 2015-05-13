@@ -3,7 +3,8 @@
 var React = require("react"),
     ProductStore = require("../stores/ProductStore.js"),
     CategoryStore = require("../stores/CategoryStore.js"),
-    Router = require("react-router");
+    Router = require("react-router"),
+    _ = require("lodash");
 
 var RouteHandler = Router.RouteHandler;
 
@@ -13,7 +14,7 @@ var ReactApp = React.createClass({
     mixins: [Router.State],
 
     contextTypes: {
-        router: React.PropTypes.func,
+        router: React.PropTypes.func
     },
 
     _onChange: function () {
@@ -51,6 +52,7 @@ var ReactApp = React.createClass({
 
     getInitialState: function () {
         // Set initial application state using props
+        this.currentProps = {};
         return this.getState();
     },
 
@@ -67,6 +69,10 @@ var ReactApp = React.createClass({
         if (t.isActive("notfound")) {
             t.showNotFound();
         } else if (t.state.product.id) {
+            t.currentProps = _.merge(t.currentProps, {
+                product: t.state.product,
+                onClose: t.hideProductPage
+            });
             t.showProductPage();
         } else {
             t.showProductsPage();
@@ -74,10 +80,24 @@ var ReactApp = React.createClass({
         return true;
     },
 
-    componentDidMount: function () {
+    componentWillMount: function () {
         var t = this;
 
         ProductStore.addChangeListener(t._onChange);
+
+        if (t.isActive("notfound")) {
+            t.currentProps = {};
+        } else {
+            t.currentProps = _.merge(t.currentProps, {
+                products: t.state.products,
+                categories: t.state.categories
+            });
+        }
+    },
+
+    componentDidMount: function () {
+        var t = this;
+
         if (t.isActive("notfound")) {
             t.showNotFound();
         } else {
@@ -86,9 +106,11 @@ var ReactApp = React.createClass({
     },
 
     render: function () {
+        var t = this;
+
         return (
             <div className="main-content Bxz(bb) Ta(c) M(a) Mstart(45px) Mend(60px) Pstart(40px) Pend(40px) Mx(auto)--sm My(45px)--sm Px(24px)--sm Py(0)--sm">
-                <RouteHandler categories={this.state.categories} products={this.state.products} product={this.state.product} onClose={this.hideProductPage} />
+                <RouteHandler {...t.currentProps} />
             </div>
         )
     }
