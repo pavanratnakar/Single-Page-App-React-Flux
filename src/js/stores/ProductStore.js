@@ -17,8 +17,19 @@ function setSelected (index) {
 }
 
 var ProductStore = _.extend({}, EventEmitter.prototype, {
-    getProducts: function () {
-        return _products;
+    getProducts: function (filters) {
+        filters = filters || {};
+
+        var results = [];
+
+        _.each(filters, function (filter) {
+            _.some(_products, function (product) {
+                if (product['category'] && product['category'].indexOf(filter.name) !== -1) {
+                    results.push(product);
+                }
+            });
+        });
+        return results.length ? results : _products;
     },
     getProduct: function () {
         var filteredProduct = _.filter(_products, function (product) {
@@ -47,7 +58,7 @@ AppDispatcher.register(function (payload) {
             loadProductData(action.data);
             break;
 
-        case ProductConstants.PRODUCT_SELECTED:
+        case ProductConstants.PRODUCT_RECEIVE:
             setSelected(action.data);
             break;
 

@@ -13,11 +13,13 @@ var {Route, DefaultRoute, NotFoundRoute} = Router;
 
 ProductActions.receiveProducts(JSON.parse(document.getElementById("initial-state").innerHTML));
 CategoryActions.receiveCategories([{
+        id: 1,
         name: "nature",
         value: false,
         title: "Nature"
     },
     {
+        id: 2,
         name: "people",
         value: false,
         title: "People"

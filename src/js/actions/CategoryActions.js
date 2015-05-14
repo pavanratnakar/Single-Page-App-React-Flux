@@ -12,6 +12,13 @@ var CategoryActions = {
         });
     },
 
+    deSelectCategory: function (index) {
+        AppDispatcher.handleViewAction({
+            actionType: CategoryConstants.CATEGORY_DESELECTED,
+            data: index
+        });
+    },
+
     receiveCategories: function (data) {
         AppDispatcher.handleServerAction({
             actionType: CategoryConstants.CATEGORY_RECEIVE_DATA,

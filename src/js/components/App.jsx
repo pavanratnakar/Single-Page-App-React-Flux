@@ -19,15 +19,14 @@ var ReactApp = React.createClass({
     },
 
     _onChange: function () {
-        this.currentProps = _.merge(this.currentProps, this.getState());
+        this.currentProps = this.getState();
         this.setState(this.getState());
     },
 
     getState: function () {
         return {
-            products: ProductStore.getProducts(),
+            products: ProductStore.getProducts(CategoryStore.getActiveCategories()),
             product: ProductStore.getProduct() || {},
-            filters: {},
             categories: CategoryStore.getCategories()
         };
     },
@@ -90,6 +89,7 @@ var ReactApp = React.createClass({
         var t = this;
 
         ProductStore.addChangeListener(t._onChange);
+        CategoryStore.addChangeListener(t._onChange);
 
         if (t.isActive("notfound")) {
             t.currentProps = {};
