@@ -21,8 +21,9 @@ function selectCategory (id) {
 }
 
 function deSelectCategory (id) {
+    id = id || null;
     _categories = _.map(_categories, function (category) {
-        if (category.id === id) {
+        if (!id || category.id === id) {
             category.value = false;
         }
         return category;
@@ -64,7 +65,7 @@ AppDispatcher.register(function (payload) {
             selectCategory(action.data)
             break;
 
-        case CategoryConstants.CATEGORY_SELECTED:
+        case CategoryConstants.CATEGORY_DESELECTED:
             deSelectCategory(action.data)
             break;
 

@@ -12,10 +12,24 @@ var CategoryActions = {
         });
     },
 
+    selectCategories: function (data) {
+        AppDispatcher.handleViewAction({
+            actionType: CategoryConstants.CATEGORY_SELECTED,
+            data: data
+        });
+    },
+
     deSelectCategory: function (index) {
         AppDispatcher.handleViewAction({
             actionType: CategoryConstants.CATEGORY_DESELECTED,
             data: index
+        });
+    },
+
+    deSelectCategories: function (data) {
+        AppDispatcher.handleViewAction({
+            actionType: CategoryConstants.CATEGORY_DESELECTED,
+            data: data
         });
     },
 

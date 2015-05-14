@@ -19,8 +19,12 @@ var ReactApp = React.createClass({
     },
 
     _onChange: function () {
-        this.currentProps = this.getState();
-        this.setState(this.getState());
+        var state = this.getState();
+
+        this.currentProps.products = state.products;
+        this.currentProps.product = state.product;
+        this.currentProps.categories = state.categories;
+        this.setState(state);
     },
 
     getState: function () {
@@ -43,11 +47,19 @@ var ReactApp = React.createClass({
         $(".error").addClass("visible");
     },
 
+    filterChange: function () {
+        // TODO
+    },
+
+    reset: function () {
+        this.context.router.transitionTo("/");
+    },
+
     hideProductPage: function () {
         this.setState({
             product: {}
         });
-        this.context.router.transitionTo("/");
+        this.reset();
     },
 
     getInitialState: function () {
@@ -99,7 +111,9 @@ var ReactApp = React.createClass({
             } else {
                 t.currentProps = _.merge(t.currentProps, {
                     products: t.state.products,
-                    categories: t.state.categories
+                    categories: t.state.categories,
+                    filterChange: t.filterChange,
+                    filterReset: t.reset
                 });
             }
         }

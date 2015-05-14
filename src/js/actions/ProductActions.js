@@ -12,13 +12,6 @@ var ProductActions = {
         });
     },
 
-    filterProducts: function (data) {
-        AppDispatcher.handleViewAction({
-            actionType: ProductConstants.PRODUCT_RECEIVE_FILTERS,
-            data: data
-        });
-    },
-
     receiveProducts: function (data) {
         AppDispatcher.handleServerAction({
             actionType: ProductConstants.PRODUCT_RECEIVE_DATA,

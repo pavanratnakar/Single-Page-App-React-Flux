@@ -4,6 +4,10 @@ var React = require("react"),
 // Export the ReactApp component
 var Filters = React.createClass({
 
+    contextTypes: {
+        router: React.PropTypes.func
+    },
+
     getInitialState: function () {
         return {}
     },
@@ -11,8 +15,7 @@ var Filters = React.createClass({
     filterClickHandler: function (e) {
         e.preventDefault();
 
-        var t = this,
-            node = $(e.currentTarget),
+        var node = $(e.currentTarget),
             id = node.data("cid");
 
         if (node.is(":checked")) {
@@ -20,20 +23,26 @@ var Filters = React.createClass({
         } else {
             CategoryActions.deSelectCategory(id);
         }
+        this.props.filterChange();
     },
 
     resetClickHandler: function (e) {
         e.preventDefault();
+        CategoryActions.deSelectCategories(null);
+        this.props.filterReset();
     },
 
     render: function () {
         var t = this,
             checked = "";
 
-        var categories = t.props.categories.map(function (category, index) {
+        var categories = t.props.categories.map(function (category) {
             checked = category.value ? "checked" : "";
             return (
-                <label className="D(b) Fz(15px) Lh(1.4em)"><input onClick={t.filterClickHandler} className="Mend(10px)" type="checkbox" name="category" value={category.name} defaultChecked={checked} data-cid={category.id} />{category.title}</label>
+                <label key={category.title} className="D(b) Fz(15px) Lh(1.4em)">
+                    <input className="Mend(10px)" type="checkbox" name="category" checked={checked} onChange={t.filterClickHandler} data-cid={category.id} />
+                    <span>{category.title}</span>
+                </label>
             )
         });
         return (
