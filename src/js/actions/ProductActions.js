@@ -12,6 +12,12 @@ var ProductActions = {
         });
     },
 
+    deSelectProduct: function () {
+        AppDispatcher.handleViewAction({
+            actionType: ProductConstants.PRODUCT_DESELECTED
+        });
+    },
+
     receiveProducts: function (data) {
         AppDispatcher.handleServerAction({
             actionType: ProductConstants.PRODUCT_RECEIVE_DATA,

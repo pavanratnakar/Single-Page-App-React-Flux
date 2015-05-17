@@ -29,6 +29,7 @@ var routes = (
     <Route handler={App}>
         <DefaultRoute handler={Products}/>
         <Route name="product" path="product/:productId" handler={Overlay}/>
+        <Route name="filters" path="filters/:filters" handler={Products}/>
         <NotFoundRoute name="notfound" handler={Error}/>
     </Route>
 );

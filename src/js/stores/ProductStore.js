@@ -62,6 +62,14 @@ AppDispatcher.register(function (payload) {
             setSelected(action.data);
             break;
 
+        case ProductConstants.PRODUCT_SELECTED:
+            setSelected(action.data);
+            break;
+
+        case ProductConstants.PRODUCT_DESELECTED:
+            _selected = null;
+            break;
+
         default:
             return true;
     }

@@ -4,10 +4,6 @@ var React = require("react"),
 // Export the ReactApp component
 var Filters = React.createClass({
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-
     getInitialState: function () {
         return {}
     },
@@ -23,13 +19,11 @@ var Filters = React.createClass({
         } else {
             CategoryActions.deSelectCategory(id);
         }
-        this.props.filterChange();
     },
 
     resetClickHandler: function (e) {
         e.preventDefault();
         CategoryActions.deSelectCategories(null);
-        this.props.filterReset();
     },
 
     render: function () {

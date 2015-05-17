@@ -4,6 +4,7 @@ var React = require("react"),
     ProductStore = require("../stores/ProductStore.js"),
     CategoryStore = require("../stores/CategoryStore.js"),
     ProductActions = require("../actions/ProductActions"),
+    CategoryActions = require("../actions/CategoryActions"),
     Router = require("react-router"),
     _ = require("lodash");
 
@@ -19,12 +20,26 @@ var ReactApp = React.createClass({
     },
 
     _onChange: function () {
-        var state = this.getState();
+        var t = this,
+            state = t.getState(),
+            tr = "/",
+            filters = [];
 
-        this.currentProps.products = state.products;
-        this.currentProps.product = state.product;
-        this.currentProps.categories = state.categories;
-        this.setState(state);
+        t.currentProps.products = state.products;
+        t.currentProps.product = state.product;
+        t.currentProps.categories = state.categories;
+        _.each(state.categories, function (category) {
+            if (category.value) {
+                filters.push(category.id)
+            }
+        });
+
+        if (state.product.id) {
+            tr = "/product/" + state.product.id;
+        } else if (filters.length > 0) {
+            tr = "/filters/{\"category\":" + JSON.stringify(filters) + "}";
+        }
+        t.context.router.transitionTo(tr);
     },
 
     getState: function () {
@@ -45,21 +60,6 @@ var ReactApp = React.createClass({
 
     showNotFound: function () {
         $(".error").addClass("visible");
-    },
-
-    filterChange: function () {
-        // TODO
-    },
-
-    reset: function () {
-        this.context.router.transitionTo("/");
-    },
-
-    hideProductPage: function () {
-        this.setState({
-            product: {}
-        });
-        this.reset();
     },
 
     getInitialState: function () {
@@ -90,33 +90,33 @@ var ReactApp = React.createClass({
     },
 
     componentDidUpdate: function () {
-        if (this.state.product.id) {
-            this.context.router.transitionTo("/product/" + this.state.product.id);
-        }
         this.loadPage();
         return true;
     },
 
     componentWillMount: function () {
-        var t = this;
+        var t = this,
+            state = {};
+
+        if (t.isActive("notfound")) {
+            state = {};
+        } else {
+            // HACKY WAY OF ADDING ACTIONS. ORIGINAL OBJECTS SHOULD BE SMART ENOUGH HERE
+            if (t.context.router.getCurrentParams().productId) {
+                ProductActions.selectProduct(t.context.router.getCurrentParams().productId);
+            }
+            if (t.context.router.getCurrentParams().filters) {
+                var f = JSON.parse(t.context.router.getCurrentParams().filters);
+                _.each(f.category, function (category) {
+                    CategoryActions.selectCategory(category);
+                });
+            }
+            state = t.getState();
+        }
+        t.currentProps = state;
 
         ProductStore.addChangeListener(t._onChange);
         CategoryStore.addChangeListener(t._onChange);
-
-        if (t.isActive("notfound")) {
-            t.currentProps = {};
-        } else {
-            if (t.context.router.getCurrentParams().productId) {
-                ProductActions.selectProduct(t.context.router.getCurrentParams().productId);
-            } else {
-                t.currentProps = _.merge(t.currentProps, {
-                    products: t.state.products,
-                    categories: t.state.categories,
-                    filterChange: t.filterChange,
-                    filterReset: t.reset
-                });
-            }
-        }
     },
 
     componentDidMount: function () {
