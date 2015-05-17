@@ -1,4 +1,4 @@
-# Single Page App using React, FLUX, Node.js, Atomic CSS, Less.js, Grunt
+# Single Page App using React, FLUX, Node.js, Atomic CSS (Atomizer), Less.js, Grunt
 
 ## Documentation
 1. Clone the GIT repo
