@@ -5,5 +5,4 @@
 2. Do npm install
 3. node app.js
 4. Access
-	1. http://localhost:8003
-	2. http://localhost:8003/react
+	1. http://localhost:8003/react
