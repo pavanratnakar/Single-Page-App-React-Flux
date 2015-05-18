@@ -37,10 +37,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/pavanratnakar/Single-Page-App-React"
+        "url": "https://github.com/pavanratnakar/Single-Page-App-React-Flux"
     },
     "bugs": {
-        "url": "https://github.com/pavanratnakar/Single-Page-App-React/issues"
+        "url": "https://github.com/pavanratnakar/Single-Page-App-React-Flux/issues"
     },
     "homepage": ""
 }
