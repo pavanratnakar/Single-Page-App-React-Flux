@@ -16,6 +16,6 @@ AppDispatcher.handleServerAction = function (action) {
 		source: "SERVERACTION",
 		action: action
 	});
-}
+};
 
 module.exports = AppDispatcher;

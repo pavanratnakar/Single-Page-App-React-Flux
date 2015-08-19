@@ -24,7 +24,7 @@ var ProductStore = _.extend({}, EventEmitter.prototype, {
 
         _.each(filters, function (filter) {
             _.some(_products, function (product) {
-                if (product['category'] && product['category'].indexOf(filter.name) !== -1) {
+                if (product.category && product.category.indexOf(filter.name) !== -1) {
                     results.push(product);
                 }
             });
@@ -37,7 +37,7 @@ var ProductStore = _.extend({}, EventEmitter.prototype, {
                 return true;
             }
         });
-        return filteredProduct ? filteredProduct[0] : null
+        return filteredProduct ? filteredProduct[0] : null;
     },
     emitChange: function () {
         this.emit("change");

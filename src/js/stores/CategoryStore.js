@@ -62,11 +62,11 @@ AppDispatcher.register(function (payload) {
             break;
 
         case CategoryConstants.CATEGORY_SELECTED:
-            selectCategory(action.data)
+            selectCategory(action.data);
             break;
 
         case CategoryConstants.CATEGORY_DESELECTED:
-            deSelectCategory(action.data)
+            deSelectCategory(action.data);
             break;
 
         default:

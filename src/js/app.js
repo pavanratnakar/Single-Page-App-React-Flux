@@ -1,11 +1,11 @@
-/** @jsx React.DOM */
+"use strict";
 
 var React = require("react"),
     Router = require("react-router"),
     App = require("./components/App.jsx"),
     Products = require("./components/Products.jsx"),
     Overlay = require("./components/Overlay.jsx"),
-    Error = require("./components/Error.jsx"),
+    ErrorComponent = require("./components/Error.jsx"),
     ProductActions = require("./actions/ProductActions"),
     CategoryActions = require("./actions/CategoryActions");
 
@@ -30,7 +30,7 @@ var routes = (
         <DefaultRoute handler={Products}/>
         <Route name="product" path="product/:productId" handler={Overlay}/>
         <Route name="filters" path="filters/:filters" handler={Products}/>
-        <NotFoundRoute name="notfound" handler={Error}/>
+        <NotFoundRoute name="notfound" handler={ErrorComponent}/>
     </Route>
 );
 
@@ -38,5 +38,5 @@ Router.run(routes, function (Handler) {
     React.render(
         <Handler/>,
         document.getElementById("react-app")
-    )
+    );
 });

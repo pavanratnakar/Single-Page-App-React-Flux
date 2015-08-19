@@ -1,12 +1,10 @@
+"use strict";
+
 var React = require("react"),
     CategoryActions = require("../actions/CategoryActions.js");
 
 // Export the ReactApp component
 var Filters = React.createClass({
-
-    getInitialState: function () {
-        return {}
-    },
 
     filterClickHandler: function (e) {
         e.preventDefault();
@@ -37,7 +35,7 @@ var Filters = React.createClass({
                     <input className="Mend(10px)" type="checkbox" name="category" checked={checked} onChange={t.filterClickHandler} data-cid={category.id} />
                     <span>{category.title}</span>
                 </label>
-            )
+            );
         });
         return (
             <div className="filters Bxz(bb) W(190px) Bg(subtitle) Pos(f) Ta(start) C(filters) Op(0) Pe(n) Bdrs(3px) visible_Op(1) visible_Trsde(1s) visible_Pe(a)">
@@ -49,7 +47,7 @@ var Filters = React.createClass({
                     <button onClick={t.resetClickHandler} className="Bdrs(2px) C(subtitle) Fx(13px) P(10px) M(10px) Cur(p) Fw(b) Bg(primary) Bd(0)">Clear filters</button>
                 </form>
             </div>
-        )
+        );
     }
 
 });

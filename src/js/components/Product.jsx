@@ -1,7 +1,7 @@
-/** @jsx React.DOM */
+"use strict";
 
 var React = require("react"),
-    ProductActions = require('../actions/ProductActions');
+    ProductActions = require("../actions/ProductActions");
 
 // Export the ReactApp component
 var Product = React.createClass({
@@ -12,7 +12,7 @@ var Product = React.createClass({
     },
 
     clickHandler: function (e) {
-        ProductActions.selectProduct($(e.currentTarget).data('index'));
+        ProductActions.selectProduct($(e.currentTarget).data("index"));
     },
 
     render: function () {
@@ -24,7 +24,7 @@ var Product = React.createClass({
                 <h2 className="D(b) Fz(10px) Whs(nw) Ov(h) Tov(e) Maw(130px) P(10px) Ta(c) M(0) Pos(a) End(0) B(0) Bgc(#000.4)"><a href="#" className="Td(n) C(subtitle)">{this.props.title}</a></h2>
                 <div className="highlight Pos(a) W(100%) H(100%) Op(0) Op(1):h T(0) Start(0) Trsde(0.4s) Bgc(#000.1)"></div>
             </li>
-        )
+        );
     }
 
 });

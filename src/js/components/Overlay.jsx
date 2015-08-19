@@ -1,7 +1,7 @@
-/** @jsx React.DOM */
+"use strict";
 
 var React = require("react"),
-    ProductActions = require('../actions/ProductActions');
+    ProductActions = require("../actions/ProductActions");
 
 // Export the ReactApp component
 var Overlay = React.createClass({
@@ -26,7 +26,7 @@ var Overlay = React.createClass({
                     <span className="close Pos(a) P(10px) Fz(28px) C(subtitle) Cur(p) T(0) End(0) Bgc(#fff.1)" onClick={this.closeClickHandler}>×</span>
                 </div>
             </div>
-        )
+        );
     }
 
 });

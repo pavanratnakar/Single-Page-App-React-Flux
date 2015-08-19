@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+"use strict";
 
 var React = require("react"),
     ProductStore = require("../stores/ProductStore.js"),
@@ -30,7 +30,7 @@ var ReactApp = React.createClass({
         t.currentProps.categories = state.categories;
         _.each(state.categories, function (category) {
             if (category.value) {
-                filters.push(category.id)
+                filters.push(category.id);
             }
         });
 
@@ -69,8 +69,6 @@ var ReactApp = React.createClass({
     },
 
     renderPage: function () {
-        var t = this;
-
         $(".main-content .page").removeClass("visible");
 
     },
@@ -130,7 +128,7 @@ var ReactApp = React.createClass({
             <div className="main-content Bxz(bb) Ta(c) M(a) Mstart(45px) Mend(60px) Pstart(40px) Pend(40px) Mx(auto)--sm My(45px)--sm Px(24px)--sm Py(0)--sm">
                 <RouteHandler {...t.currentProps} />
             </div>
-        )
+        );
     }
 });
 
