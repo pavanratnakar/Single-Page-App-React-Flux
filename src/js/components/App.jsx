@@ -5,8 +5,11 @@ var React = require("react"),
     CategoryStore = require("../stores/CategoryStore.js"),
     ProductActions = require("../actions/ProductActions"),
     CategoryActions = require("../actions/CategoryActions"),
-    Router = require("react-router"),
-    _ = require("lodash");
+    Router = require("react-router");
+
+var _ = {
+        each: require("lodash/Collection/each")
+    };
 
 var RouteHandler = Router.RouteHandler;
 

@@ -4,10 +4,20 @@ var React = require("react"),
     Filters = require("./Filters.jsx"),
     Product = require("./Product.jsx");
 
-// Export the ReactApp component
 var Products = React.createClass({
 
-    // Set the initial component state
+    propTypes: {
+        products: React.PropTypes.array,
+        categories: React.PropTypes.array
+    },
+
+    getDefaultProps: function() {
+        return {
+            products: [],
+            categories: []
+        };
+    },
+
     getInitialState: function () {
         return {
             farm: "farm7.staticflickr.com"
@@ -19,7 +29,13 @@ var Products = React.createClass({
 
         var products = t.props.products.map(function (p) {
             return (
-                <Product key={p.id} id={p.id} server={p.server} secret={p.secret} title={p.title} farm={t.state.farm} onClick={t.productChange} />
+                <Product
+                    key={p.id}
+                    id={p.id}
+                    farm={t.state.farm}
+                    server={p.server}
+                    secret={p.secret}
+                    title={p.title} />
             );
         });
 

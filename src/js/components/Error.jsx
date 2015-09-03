@@ -2,7 +2,6 @@
 
 var React = require("react");
 
-// Export the ReactApp component
 var ErrorModule = React.createClass({
 
     render: function () {
